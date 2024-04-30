@@ -112,6 +112,13 @@
   }
 }
 
+@media (prefers-color-scheme: dark) {
+    :root {
+    --title-color: #FFFFFF;
+      --body-color: #0d1117;
+    }
+}
+
 .markdown-body {
   -ms-text-size-adjust: 100%;
   -webkit-text-size-adjust: 100%;
@@ -183,9 +190,10 @@
 .markdown-body h1 {
   margin: .67em 0;
   font-weight: var(--base-text-weight-semibold, 600);
-  padding-bottom: .3em;
+  padding: .3em;
   font-size: 2em;
   border-bottom: 1px solid var(--color-border-muted);
+  text-align: center;
 }
 
 .markdown-body mark {
@@ -419,6 +427,7 @@
 }
 
 .markdown-body p {
+  font-size: 2em;
   margin-top: 0;
   margin-bottom: 10px;
 }
