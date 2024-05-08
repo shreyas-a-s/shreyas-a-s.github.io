@@ -58,4 +58,12 @@ window.addEventListener('DOMContentLoaded', (event) => {
   responsiveNavItems.forEach(function (responsiveNavItem) {
     responsiveNavItem.addEventListener('click', collapseNavbar)
   })
+
+  // Add click event listener to the document body
+  document.body.addEventListener('click', function (event) {
+    // Check if the click target is outside the navbar
+    if (!event.target.closest('.navbar')) {
+      collapseNavbar()
+    }
+  })
 })
