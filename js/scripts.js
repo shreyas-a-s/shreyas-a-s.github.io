@@ -41,11 +41,29 @@ window.addEventListener('DOMContentLoaded', (event) => {
   const responsiveNavItems = [].slice.call(
     document.querySelectorAll('#navbarResponsive .nav-link'),
   )
-  responsiveNavItems.map(function(responsiveNavItem) {
-    responsiveNavItem.addEventListener('click', () => {
-      if (window.getComputedStyle(navbarToggler).display !== 'none') {
-        navbarToggler.click()
-      }
-    })
+
+  // Function to check if the navbar is expanded
+  function isNavbarExpanded() {
+    return navbarToggler.getAttribute('aria-expanded') === 'true'
+  }
+
+  // Function to collapse the navbar
+  function collapseNavbar() {
+    if (isNavbarExpanded()) {
+      navbarToggler.click()
+    }
+  }
+
+  // Add click event listener to each responsive navigation item
+  responsiveNavItems.forEach(function (responsiveNavItem) {
+    responsiveNavItem.addEventListener('click', collapseNavbar)
+  })
+
+  // Add click event listener to the document body
+  document.body.addEventListener('click', function (event) {
+    // Check if the click target is outside the navbar
+    if (!event.target.closest('.navbar')) {
+      collapseNavbar()
+    }
   })
 })
